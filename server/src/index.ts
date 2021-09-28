@@ -1,10 +1,14 @@
-import express,{Application, application} from "express";
-class Server{
-    public app :Application
-   
+import express, {Application} from 'express';
+
+import indexRoutes from './routes/indexRoutes';
+
+
+class Server {
+
+    public app: Application;
 
     constructor(){
-        this.app= express();
+        this.app = express()
         this.config();
         this.routes();
     }
@@ -22,7 +26,8 @@ class Server{
             console.log('Server on port',this.app.get('port'));
         });
     }
+
 }
 
-const server = new Server ();
+const server = new Server();
 server.start();

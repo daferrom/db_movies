@@ -1,5 +1,7 @@
 import { Router } from 'express';
 
+import  moviesController from '../controllers/moviesController'
+
 class MoviesRoutes {
 
     public router: Router = Router();
@@ -9,7 +11,7 @@ class MoviesRoutes {
     }
 
     config(): void {
-        this.router.get('/', (req, res) => res.send('Movies'));
+        this.router.get('/',moviesController.index);
     }
 }
 

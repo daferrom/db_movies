@@ -7,6 +7,6 @@ exports.default = {
         user: 'root',
         password: 'Simonides1927+',
         database: 'video_club_db',
-        //port: 'value of port number'//
+        //port: '3306'
     }
 };

@@ -11,7 +11,7 @@ class MoviesRoutes {
     }
 
     config(): void {
-        this.router.get('/',moviesController.index);
+        this.router.get('/', moviesController.index);
     }
 }
 

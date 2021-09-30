@@ -1,14 +1,21 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.moviesController = void 0;
-const database_1 = __importDefault(require("../database"));
 class MoviesController {
-    index(req, res) {
-        database_1.default.query('DESCRIBE movies');
-        res.json('movies');
+    list(req, res) {
+        res.json({ text: 'Listing movies' });
+    }
+    getOne(req, res) {
+        res.json({ text: 'This is the movie ' + req.params.id });
+    }
+    create(req, res) {
+        res.json({ text: 'creating a movie ' });
+    }
+    update(req, res) {
+        res.json({ text: 'Updating a movie ' + req.params.id });
+    }
+    delete(req, res) {
+        res.json({ text: 'deleting a movie ' + req.params.id });
     }
 }
 exports.moviesController = new MoviesController;

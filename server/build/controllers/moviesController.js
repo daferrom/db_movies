@@ -9,8 +9,14 @@ class MoviesController {
         res.json({ text: 'This is the movie ' + req.params.id });
     }
     create(req, res) {
-        res.json({ text: 'creating a movie ' });
+        console.log(req.body);
+        res.json({ message: 'Movie saved on database' });
     }
+    /*public async create(req: Request, res: Response):Promise<void> {
+        await pool.query('INSERT INTO movies set ?', [req.body]);
+        console.log(req.body);
+        res.json({message: 'Movie saved on database'});
+    }*/
     update(req, res) {
         res.json({ text: 'Updating a movie ' + req.params.id });
     }

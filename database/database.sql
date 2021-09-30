@@ -11,12 +11,11 @@ mov_time int,
 mov_lang char(50),
 mov_dt_rel date,
 mov_rel_country char(5),
-mov_image_url varchar(70),
+mov_image_url varchar(200),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 DESCRIBE movies;
-
 
 CREATE TABLE actors
 (

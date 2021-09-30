@@ -4,8 +4,8 @@ import pool from '../database'
 
 class MoviesController {
     public index (req: Request, res: Response){
-       /*pool.query('DESCRIBE movies');*/
-       res.json('movies');  
+       pool.query('DESCRIBE movies');
+       res.send('movies');  
     }
 }
 

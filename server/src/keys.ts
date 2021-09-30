@@ -6,7 +6,7 @@ export default {
         user: 'root',
         password: 'Simonides1927+',
         database: 'video_club_db',
-        //port: '3306'
+        //port: '3000'
     }
 
 }

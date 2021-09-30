@@ -2,11 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.moviesController = void 0;
 class MoviesController {
-<<<<<<< HEAD
     index(req, res) {
         pool.query('DESCRIBE movies');
         res.json('movies');
-=======
     list(req, res) {
         res.json({ text: 'Listing movies' });
     }
@@ -27,7 +25,6 @@ class MoviesController {
     }
     delete(req, res) {
         res.json({ text: 'deleting a movie ' + req.params.id });
->>>>>>> 720ea2f4156e3d4d6a22000784bb625deedc3e49
     }
 }
 exports.moviesController = new MoviesController;

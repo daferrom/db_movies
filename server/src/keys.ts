@@ -8,5 +8,4 @@ export default {
         database: 'bfin8x7v3anck6tfjuip',
         //port: '3306'
     }
-
 }

@@ -16,10 +16,18 @@ exports.moviesController = void 0;
 const database_1 = __importDefault(require("../database"));
 class MoviesController {
     list(req, res) {
-        res.json({ text: 'Listing movies' });
+        return __awaiter(this, void 0, void 0, function* () {
+            const movies = yield database_1.default.query('SELECT * FROM movies');
+            res.json(movies);
+        });
     }
     getOne(req, res) {
-        res.json({ text: 'This is the movie ' + req.params.id });
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const movies = yield database_1.default.query('SELECT * FROM movies WHERE mov_id = ?', [id]);
+            console.log(movies);
+            res.json({ text: 'Movie Found' });
+        });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {

@@ -4,12 +4,15 @@ import pool from '../database'
 
 class MoviesController {
     
-    public list (req: Request, res: Response){
-       res.json({text:'Listing movies'});  
+    public async list (req: Request, res: Response){
+       const movies = await pool.query('SELECT * FROM movies')
+        res.json(movies)
     }
-    public getOne(req: Request, res: Response) {
-        res.json({text:'This is the movie '+ req.params.id });
-
+    public async getOne(req: Request, res: Response){
+        const { id } = req.params;
+        const movies = await pool.query('SELECT * FROM movies WHERE mov_id = ?', [id]);
+        console.log(movies);
+        res.json({text: 'Movie Found'});
     }
     public async create(req: Request, res: Response){
         await pool.query('INSERT INTO movies set ?', [req.body]);

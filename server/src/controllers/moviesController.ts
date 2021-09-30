@@ -9,15 +9,16 @@ class MoviesController {
     }
     public getOne(req: Request, res: Response) {
         res.json({text:'This is the movie '+ req.params.id });
+
     }
-    public create(req: Request, res: Response){
-        console.log(req.body);
+    public async create(req: Request, res: Response){
+        await pool.query('INSERT INTO movies set ?', [req.body]);
         res.json({message: 'Movie saved on database'});
     }
     /*public async create(req: Request, res: Response):Promise<void> {
         await pool.query('INSERT INTO movies set ?', [req.body]);
         console.log(req.body);
-        res.json({message: 'Movie saved on database'});
+        res.json({message: ''});
     }*/
     
     public update (req: Request, res:Response){

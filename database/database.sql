@@ -16,7 +16,7 @@ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 DESCRIBE movies;
-
+/*
 CREATE TABLE actors
 (
 act_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -72,4 +72,4 @@ rev_id int,
 rev_stars int,
 num_o_ratings int
 );
-
+*/

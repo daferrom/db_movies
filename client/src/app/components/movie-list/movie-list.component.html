@@ -1,1 +1,24 @@
-<p>movie-list works!</p>
+<div class="col-md-4" *ngFor="let movie of movies">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            {{movie.mov_title}}
+            <button class="btn btn-danger">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        <img [src]="movie.mov_image_url" class="card-img-top">
+        <div class="card-body"></div>
+        <p>Año: {{movie.mov_year}} </p>
+        <p>Duración: {{movie.mov_time}} </p>
+        <p>Idioma: {{movie.mov_lang}} </p>
+        <p>Fecha de lanzamiento:{{movie.mov_dt_rel}}</p>
+        <p>Pais: {{movie.mov_rel_country}}</p>
+        <a href="" class="btn btn-info btn-block">
+            EDIT MOVIE
+        </a>
+
+               
+            
+    </div>
+</div>
+

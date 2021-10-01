@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { Movie } from 'src/app/models/Movie';
 
 @Component({
   selector: 'app-movie-form',
@@ -6,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-form.component.css']
 })
 export class MovieFormComponent implements OnInit {
+
+  @HostBinding('class') classes = 'row';
+
+  movie: Movie = {
+    mov_id: 0,
+    mov_title: '',
+    mov_year: 0,
+    mov_lang: '',
+    mov_dt_rel: new Date,
+    mov_rel_country:'',
+    mov_image_url:'',
+    created_at: new Date
+  }
 
   constructor() { }
 

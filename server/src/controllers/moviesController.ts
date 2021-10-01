@@ -4,28 +4,40 @@ import pool from '../database'
 
 class MoviesController {
     
-    public list (req: Request, res: Response){
-       res.json({text:'Listing movies'});  
+    public async list (req: Request, res: Response){
+       const movies = await pool.query('SELECT * FROM movies')
+        res.json(movies)
     }
-    public getOne(req: Request, res: Response) {
-        res.json({text:'This is the movie '+ req.params.id });
+    public async getOne(req: Request, res: Response): Promise<any>{
+        const { id } = req.params;
+        const movies = await pool.query('SELECT * FROM movies WHERE mov_id = ?', [id]);
+        if (movies.length > 0){
+            return res.json(movies[0]);
+        }
+        res.status(404).json({text: "the movie does not exist"})
+        
     }
-    public create(req: Request, res: Response){
-        console.log(req.body);
+    public async create(req: Request, res: Response): Promise<void>{
+        await pool.query('INSERT INTO movies set ?', [req.body]);
         res.json({message: 'Movie saved on database'});
     }
     /*public async create(req: Request, res: Response):Promise<void> {
         await pool.query('INSERT INTO movies set ?', [req.body]);
         console.log(req.body);
-        res.json({message: 'Movie saved on database'});
+        res.json({message: ''});
     }*/
     
-    public update (req: Request, res:Response){
-        res.json({text: 'Updating a movie ' + req.params.id});
+    public async update (req: Request, res:Response){
+        const { id } = req.params;
+        await pool.query('UPDATE movies set ? WHERE mov_id = ?', [req.body, id]);
+        res.json({message: 'The movie was updated'});
+
     }
   
-    public delete(req:Request, res: Response){
-        res.json({text: 'deleting a movie ' + req.params.id});
+    public async delete(req:Request, res: Response): Promise<void>{
+        const { id } = req.params;
+        await pool.query('DELETE FROM movies WHERE mov_id = ?', [id]);
+        res.json({message: 'The movie was deleted'});       
     }
 }
 

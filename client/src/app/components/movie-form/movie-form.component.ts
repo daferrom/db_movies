@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Movie } from 'src/app/models/Movie';
+import { MoviesService } from '../../services/movies.service'
 
 @Component({
   selector: 'app-movie-form',
@@ -21,7 +22,7 @@ export class MovieFormComponent implements OnInit {
     created_at: new Date
   }
 
-  constructor() { }
+  constructor(private moviesService: MoviesService ) { }
 
   ngOnInit(): void {
   }

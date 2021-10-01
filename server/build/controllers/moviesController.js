@@ -25,8 +25,10 @@ class MoviesController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const movies = yield database_1.default.query('SELECT * FROM movies WHERE mov_id = ?', [id]);
-            console.log(movies);
-            res.json({ text: 'Movie Found' });
+            if (movies.length > 0) {
+                return res.json(movies[0]);
+            }
+            res.status(404).json({ text: "the movie does not exist" });
         });
     }
     create(req, res) {
@@ -41,10 +43,18 @@ class MoviesController {
         res.json({message: ''});
     }*/
     update(req, res) {
-        res.json({ text: 'Updating a movie ' + req.params.id });
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            yield database_1.default.query('UPDATE movies set ? WHERE mov_id = ?', [req.body, id]);
+            res.json({ message: 'The movie was updated' });
+        });
     }
     delete(req, res) {
-        res.json({ text: 'deleting a movie ' + req.params.id });
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            yield database_1.default.query('DELETE FROM movies WHERE mov_id = ?', [id]);
+            res.json({ message: 'The movie was deleted' });
+        });
     }
 }
 exports.moviesController = new MoviesController;

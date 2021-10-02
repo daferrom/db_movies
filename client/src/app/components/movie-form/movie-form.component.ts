@@ -1,4 +1,6 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { Subscriber } from 'rxjs';
 import { Movie } from 'src/app/models/Movie';
 import { MoviesService } from '../../services/movies.service'
 
@@ -16,10 +18,10 @@ export class MovieFormComponent implements OnInit {
     mov_title: '',
     mov_year: 0,
     mov_lang: '',
-    mov_dt_rel: new Date,
+    mov_dt_rel: '',
     mov_rel_country:'',
-    mov_image_url:'',
-    created_at: new Date
+    mov_image_url: '',
+    
   }
 
   constructor(private moviesService: MoviesService ) { }
@@ -27,4 +29,18 @@ export class MovieFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  saveNewMovie() {
+    
+    delete this.movie.mov_id;
+
+    this.moviesService.saveMovie(this.movie)
+    .subscribe(
+      res => {
+        console.log(res);
+      },
+      err => console.error(err)
+    )
+
+    //console.log(this.movie)
+  }
 }

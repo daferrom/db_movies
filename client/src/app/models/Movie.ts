@@ -4,8 +4,7 @@ export interface Movie {
     mov_year?: number;
     mov_time?: number;
     mov_lang?: string;
-    mov_dt_rel?:Date;
+    mov_dt_rel?:string;
     mov_rel_country?: string;
-    mov_image_url?: string;
-    created_at?: Date;
+    mov_image_url?: string
 }

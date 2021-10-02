@@ -1,32 +1,43 @@
-<div class="col-md-4-offset-md-4">
+<div class="col-md-4-offset-md-2">
     <div class="card">
         <div class="card-body">
             <form>
-                <div class="from-group">
-                    <input type="text" name="mov_title" placeholder="Título" class="form-control" autofocus>
+                <div class="form-group">
+                    <input type="text" name="mov_title" [(ngModel)]="movie.mov_title" placeholder="Título" class="form-control" autofocus>
                 </div>
-                <div class="from-group">
-                    <input type="text" name="mov_year" placeholder="Año" class="form-control" autofocus>
+                <div class="form-group">
+                    <input type="text" name="mov_year" [(ngModel)]="movie.mov_year" placeholder="Año" class="form-control" autofocus>
                 </div>
-                <div class="from-group">
-                    <input type="text" name="mov_time" placeholder="Duración" class="form-control" autofocus>
+                <div class="form-group">
+                    <input type="text" name="mov_time" [(ngModel)]="movie.mov_time" placeholder="Duración" class="form-control" autofocus>
                 </div>
-                <div class="from-group">
-                    <input type="text" name="mov_lang" placeholder="Idioma" class="form-control" autofocus>
+                <div class="form-group">
+                    <input type="text" name="mov_lang" [(ngModel)]="movie.mov_lang" placeholder="Idioma" class="form-control" autofocus>
                 </div>
-                <div class="from-group">
-                    <input type="text" name="mov_dt_rel" placeholder="Fecha de estreno" class="form-control" autofocus>
+                <div class="form-group">
+                    <input type="text" name="mov_dt_rel" [(ngModel)]="movie.mov_dt_rel" placeholder="Fecha de estreno" class="form-control" autofocus>
                 </div>
-                <div class="from-group">
-                    <input type="text" name="mov_rel_country" placeholder="Pais" class="form-control" autofocus>
+                <div class="form-group">
+                    <input type="text" name="mov_rel_country" [(ngModel)]="movie.mov_rel_country" placeholder="Pais" class="form-control" autofocus>
                 </div>
-                <div class="from-group">
-                    <input type="url" name="mov_image_url" placeholder="Imagen" class="form-control" autofocus>
+                <div class="form-group">
+                    <input type="text" name="mov_image_url" [(ngModel)]="movie.mov_image_url" placeholder="Imagen" class="form-control" autofocus>
                 </div>
-                <button class="btn btn-success btn-block">
+                <button class="btn btn-success btn-block" (click)="saveNewMovie()">
                     Guardar
                 </button>
             </form>
         </div>
     </div>
 </div>
+
+<div class="col-md-4">
+    <div class="card card-body text-center">
+        <img [src]="movie.mov_image_url" alt="movie.mov_title">
+        <h3>{{movie.mov_title}}</h3>
+    </div>
+</div>
+
+
+
+

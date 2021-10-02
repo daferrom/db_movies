@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { MoviesService } from '../../services/movies.service';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
+
+  @HostBinding('class') classes = 'row';
 
   movies: any = [];
 
